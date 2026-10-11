@@ -236,26 +236,6 @@ button{font-family:inherit}
 .form-field textarea{resize:vertical;min-height:80px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-/* что интересует */
-.chips-block{margin-bottom:14px}
-.field-label{
-  display:block;font-size:9.5px;font-weight:700;
-  text-transform:uppercase;letter-spacing:0.8px;
-  color:#1C2B4B;margin-bottom:7px;
-}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{position:relative;display:inline-block}
-.chip input{position:absolute;opacity:0;pointer-events:none}
-.chip span{
-  display:inline-block;padding:10px 14px;
-  border:1px solid #DDD8D0;background:#fff;
-  font-size:12px;font-weight:600;color:#1C2B4B;
-  cursor:pointer;transition:background 0.15s,color 0.15s;
-  -webkit-tap-highlight-color:transparent;
-}
-.chip input:checked + span{background:#1C2B4B;color:#C9A24B;border-color:#1C2B4B}
-.chip input:focus-visible + span{outline:2px solid #C9A24B;outline-offset:2px}
-
 .form-submit{
   width:100%;background:#1C2B4B;color:#C9A24B;
   font-family:'Inter',sans-serif;
@@ -277,7 +257,6 @@ button{font-family:inherit}
 .form-success-icon{font-size:40px;margin-bottom:14px;color:#C9A24B}
 .form-success-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#1C2B4B;margin-bottom:10px}
 .form-success-text{font-size:12px;color:#555;line-height:1.65}
-.form-success-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
 
 /* поле-ловушка для роботов (людям не видно) */
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
@@ -300,6 +279,9 @@ button{font-family:inherit}
   -webkit-tap-highlight-color:transparent;
 }
 .contact-btn:hover,.contact-btn:active{background:#1C2B4B;color:#C9A24B}
+
+.contact-btn--wa{background:#158045;border-color:#158045;color:#fff}
+.contact-btn--wa:hover,.contact-btn--wa:active{background:#0F6A38;border-color:#0F6A38;color:#fff}
 
 /* ── FOOTER ── */
 .footer{background:#1C2B4B;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
@@ -366,7 +348,6 @@ button{font-family:inherit}
     font-size:16px; /* предотвращает zoom на iOS */
     padding:12px 14px;
   }
-  .chip span{font-size:13px;padding:11px 14px}
   .form-submit{font-size:12px;padding:16px;letter-spacing:1px}
 
   /* Contact */
@@ -412,6 +393,13 @@ button{font-family:inherit}
 
 <div class="give-grid">
   <div class="give-card">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <div>
+      <div class="give-h">Поддержка партнёра</div>
+      <div class="give-p">Актуальные прайсы, презентации и материалы для клиента, юридическое сопровождение сделки.</div>
+    </div>
+  </div>
+  <div class="give-card">
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <div>
       <div class="give-h">Объекты</div>
@@ -423,13 +411,6 @@ button{font-family:inherit}
     <div>
       <div class="give-h">Решения для вашего клиента</div>
       <div class="give-p">Ремонт и обустройство, а после покупки управление арендой. Условия по запросу.</div>
-    </div>
-  </div>
-  <div class="give-card">
-    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-    <div>
-      <div class="give-h">Поддержка партнёра</div>
-      <div class="give-p">Актуальные прайсы, презентации и материалы для клиента, юридическое сопровождение сделки.</div>
     </div>
   </div>
 </div>
@@ -628,16 +609,6 @@ button{font-family:inherit}
         </div>
       </div>
 
-      <!-- Что интересует: выбор попадает в начало поля «Комментарий», поля в Make не меняются -->
-      <div class="chips-block">
-        <span class="field-label">Что интересует (можно выбрать несколько)</span>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" value="Продажа"/><span>Продажа</span></label>
-          <label class="chip"><input type="checkbox" value="Ремонт и обустройство"/><span>Ремонт и обустройство</span></label>
-          <label class="chip"><input type="checkbox" value="Управление арендой"/><span>Управление арендой</span></label>
-        </div>
-      </div>
-
       <div class="form-field">
         <label>Комментарий</label>
         <textarea id="f-comment" placeholder="Расскажите о ваших клиентах или задайте вопрос..."></textarea>
@@ -656,12 +627,7 @@ button{font-family:inherit}
     <div class="form-success" id="formSuccess">
       <div class="form-success-icon">✓</div>
       <div class="form-success-title">Запрос отправлен!</div>
-      <div class="form-success-text">Мы получили вашу заявку и свяжемся с вами по указанным контактам, чтобы отправить прайсы и условия сотрудничества.<br>Если вопрос срочный, напишите нам напрямую:</div>
-      <div class="form-success-actions">
-        <a class="contact-btn" href="https://wa.me/359895176685?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Василий</a>
-        <a class="contact-btn" href="https://wa.me/359877692546?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Александр</a>
-        <a class="contact-btn js-telegram" href="#" target="_blank" rel="noopener" style="display:none">Telegram</a>
-      </div>
+      <div class="form-success-text">Мы получили вашу заявку и свяжемся с вами по указанным контактам, чтобы отправить прайсы и условия сотрудничества.<br>Если вопрос срочный, напишите нам напрямую: контакты ниже.</div>
     </div>
   </div>
 </section>
@@ -672,8 +638,8 @@ button{font-family:inherit}
     <h2 class="contact-title">Удобнее написать?</h2>
     <p class="contact-sub">Напишите нам в мессенджер — ответим на вопросы и подскажем, как получить прайсы и условия.</p>
     <div class="contact-btns">
-      <a class="contact-btn" href="https://wa.me/359895176685?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Василий</a>
-      <a class="contact-btn" href="https://wa.me/359877692546?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Александр</a>
+      <a class="contact-btn contact-btn--wa" href="https://wa.me/359895176685?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Василий</a>
+      <a class="contact-btn contact-btn--wa" href="https://wa.me/359877692546?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Александр</a>
       <a class="contact-btn js-telegram" href="#" target="_blank" rel="noopener" style="display:none">Telegram</a>
     </div>
   </div>
@@ -753,15 +719,6 @@ async function submitForm(){
 
   var phone = document.getElementById('f-phone').value.trim();
   var comment = document.getElementById('f-comment').value.trim();
-
-  /* Выбранные интересы добавляются в начало комментария */
-  var interests = Array.prototype.map.call(
-    document.querySelectorAll('.chip input:checked'),
-    function(i){ return i.value; }
-  );
-  if(interests.length){
-    comment = 'Что интересует: ' + interests.join(', ') + (comment ? '. ' + comment : '');
-  }
 
   var submitBtn = document.querySelector('.form-submit');
   var originalBtnText = submitBtn.textContent;

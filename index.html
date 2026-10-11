@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OPTIMUS ESTATE — Партнёрская программа</title>
+<meta name="description" content="Эксклюзивные объекты, ремонт и управление арендой для вашего клиента. Работаем только через партнёров. Запросите прайсы и условия."/>
+
+<!-- Предпросмотр ссылки (Facebook, WhatsApp, Telegram).
+     og:image: сейчас hero-bg.jpg; лучше позже сделать отдельную картинку 1200×630 px и заменить адрес -->
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Optimus Estate"/>
+<meta property="og:title" content="Optimus Estate — партнёрская программа"/>
+<meta property="og:description" content="Эксклюзивные объекты, ремонт и управление арендой для вашего клиента. Работаем только через партнёров."/>
+<meta property="og:url" content="https://optimus-estate.github.io/presentation-forma.ru/"/>
+<meta property="og:image" content="https://optimus-estate.github.io/presentation-forma.ru/hero-bg.jpg"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:#FAF7F2;
+  color:#1a1a1a;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+body > *{width:100%;max-width:1100px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  min-height:260px;
+  background:url('hero-bg.jpg') center/cover no-repeat;
+  padding:24px 20px 32px;
+  color:#fff;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(28,43,75,0.58);pointer-events:none;
+}
+.hero > *{position:relative;z-index:1}
+.hero-top{display:flex;align-items:center;gap:12px}
+.hero-logo{
+  width:44px;height:44px;object-fit:contain;
+  filter:brightness(0) invert(1);flex-shrink:0;
+}
+.hero-logo-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:#fff;
+  line-height:1.1;
+}
+.hero-logo-sub{
+  font-size:9px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:#C9A24B;margin-top:3px;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,5.5vw,36px);
+  font-weight:700;color:#fff;
+  margin-top:20px;line-height:1.15;
+  text-transform:uppercase;
+}
+.hero-sub{
+  margin-top:10px;
+  font-size:12px;
+  color:rgba(255,255,255,0.88);
+  line-height:1.65;
+}
+
+/* переключатель языка */
+.lang-switch{
+  display:none;margin-left:auto;align-self:flex-start;
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  color:rgba(255,255,255,0.6);
+}
+.lang-switch b{color:#fff}
+.lang-switch a{color:#C9A24B;padding:4px 2px}
+
+/* кнопка в первом экране */
+.hero-cta{
+  display:inline-block;margin-top:18px;
+  background:#C9A24B;color:#1C2B4B;
+  font-family:'Inter',sans-serif;
+  font-size:12px;font-weight:800;
+  text-transform:uppercase;letter-spacing:1px;
+  padding:14px 22px;
+  -webkit-tap-highlight-color:transparent;
+}
+.hero-cta:hover,.hero-cta:active{background:#fff}
+
+/* ── SECTION HEAD ── */
+.section-head{padding:24px 20px 12px;background:#FAF7F2}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#1C2B4B}
+.section-subtitle{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:#C9A24B;text-transform:uppercase;margin-top:3px}
+
+/* ── ЧТО ВЫ ПОЛУЧАЕТЕ ── */
+.give-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;padding:0 12px 16px;background:#FAF7F2;
+}
+.give-card{background:#fff;border:1px solid #EDE7DC;padding:16px 14px;text-align:center}
+.give-card svg{width:32px;height:32px;stroke:#C9A24B;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin:0 auto 10px;display:block;flex-shrink:0}
+.give-h{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:#1C2B4B;margin-bottom:6px;line-height:1.3}
+.give-p{font-size:11px;color:#555;line-height:1.6}
+
+/* ── КОМПЛЕКСЫ: КОМПАКТНЫЕ ПЛИТКИ ── */
+.tiles{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;padding:0 12px 20px;
+  align-items:start;background:#FAF7F2;
+}
+.tile{
+  background:#fff;border:1px solid #EDE7DC;border-radius:3px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;
+}
+.tile-media{position:relative;cursor:pointer}
+.tile-img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.tile-name{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:26px 12px 9px;
+  background:linear-gradient(to bottom,rgba(28,43,75,0),rgba(28,43,75,0.92));
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:700;color:#fff;line-height:1.15;
+}
+.tile-loc{
+  display:block;margin-top:3px;
+  font-family:'Inter',sans-serif;
+  font-size:9.5px;font-weight:600;letter-spacing:0.4px;color:#C9A24B;
+}
+.tile-toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 12px;background:#fff;border:none;cursor:pointer;
+  text-align:left;-webkit-tap-highlight-color:transparent;
+}
+.tile-line{font-size:11px;color:#333;line-height:1.45}
+.tile-plus{
+  flex-shrink:0;width:22px;height:22px;border:1px solid #C9A24B;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;line-height:1;color:#1C2B4B;
+}
+.tile-toggle:hover .tile-plus{background:#C9A24B}
+.tile-toggle:focus-visible{outline:2px solid #C9A24B;outline-offset:-2px}
+.tile-details{display:none;padding:2px 12px 14px;border-top:1px solid #EDE7DC}
+.tile.open .tile-details{display:block;padding-top:10px}
+
+.card-list{list-style:none}
+.card-list li{
+  font-size:11px;color:#333;line-height:1.55;
+  padding:1px 0;display:flex;gap:5px;
+}
+.card-list li::before{content:'★';color:#C9A24B;font-size:7.5px;flex-shrink:0;margin-top:3px}
+.card-tag{
+  display:inline-block;margin-top:12px;
+  background:#FAF7F2;border:1px solid #C9A24B;
+  color:#1C2B4B;font-size:9px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.7px;
+  padding:7px 12px;
+}
+.card-tag:hover{background:#C9A24B;color:#1C2B4B}
+
+/* ── КАК ЭТО РАБОТАЕТ ── */
+.how-section{background:#fff;padding:26px 32px 30px;border-top:1px solid #EDE7DC}
+.how-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:700;
+  text-transform:uppercase;color:#1C2B4B;
+  text-align:center;margin-bottom:22px;
+}
+.how-flow{display:flex;align-items:flex-start;justify-content:center;flex-wrap:nowrap}
+.how-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:150px}
+.how-circle{
+  width:50px;height:50px;border-radius:50%;
+  background:#fff;border:1.5px solid #C9A24B;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:8px;flex-shrink:0;
+}
+.how-circle svg{width:22px;height:22px;stroke:#1C2B4B;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.how-label{font-size:10.5px;font-weight:500;color:#1C2B4B;line-height:1.45;max-width:130px}
+.how-arrow{flex-shrink:0;font-size:16px;color:#C9A24B;margin-top:17px;padding:0 6px;font-weight:300}
+
+/* ── FORM ── */
+.form-section{background:#FAF7F2;padding:32px 20px 44px}
+.form-wrap{max-width:580px;margin:0 auto}
+.form-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:700;
+  text-transform:uppercase;color:#1C2B4B;
+  text-align:center;margin-bottom:6px;
+}
+.form-gold-line{width:50px;height:2px;background:#C9A24B;margin:0 auto 16px}
+.form-sub{font-size:12px;color:#666;text-align:center;line-height:1.65;margin-bottom:18px}
+
+/* что будет после заявки */
+.next-steps{list-style:none;display:flex;gap:10px;margin:0 0 22px}
+.next-steps li{flex:1;text-align:center;font-size:10.5px;color:#444;line-height:1.45}
+.next-num{
+  width:24px;height:24px;border-radius:50%;
+  border:1.5px solid #C9A24B;color:#1C2B4B;
+  font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 6px;
+}
+
+.form-field{margin-bottom:12px}
+.form-field label{
+  display:block;font-size:9.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.8px;
+  color:#1C2B4B;margin-bottom:5px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea{
+  width:100%;padding:11px 14px;
+  border:1px solid #DDD8D0;background:#fff;
+  font-family:'Inter',sans-serif;
+  font-size:13px;color:#1a1a1a;
+  outline:none;border-radius:0;
+  -webkit-appearance:none;
+  transition:border-color 0.2s;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus{border-color:#C9A24B}
+.form-field textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* что интересует */
+.chips-block{margin-bottom:14px}
+.field-label{
+  display:block;font-size:9.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.8px;
+  color:#1C2B4B;margin-bottom:7px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-block}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{
+  display:inline-block;padding:10px 14px;
+  border:1px solid #DDD8D0;background:#fff;
+  font-size:12px;font-weight:600;color:#1C2B4B;
+  cursor:pointer;transition:background 0.15s,color 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.chip input:checked + span{background:#1C2B4B;color:#C9A24B;border-color:#1C2B4B}
+.chip input:focus-visible + span{outline:2px solid #C9A24B;outline-offset:2px}
+
+.form-submit{
+  width:100%;background:#1C2B4B;color:#C9A24B;
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:800;
+  text-transform:uppercase;letter-spacing:1.5px;
+  padding:15px;border:none;cursor:pointer;
+  margin-top:6px;transition:background 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.form-submit:hover,.form-submit:active{background:#C9A24B;color:#1C2B4B}
+.form-submit:disabled{opacity:0.6;cursor:default}
+.form-note{font-size:9px;color:#999;text-align:center;margin-top:12px;line-height:1.55}
+.form-note a{color:#1C2B4B;text-decoration:underline}
+.form-success{
+  display:none;text-align:center;
+  padding:32px 20px;background:#fff;
+  border:1px solid #C9A24B;
+}
+.form-success-icon{font-size:40px;margin-bottom:14px;color:#C9A24B}
+.form-success-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#1C2B4B;margin-bottom:10px}
+.form-success-text{font-size:12px;color:#555;line-height:1.65}
+.form-success-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+
+/* поле-ловушка для роботов (людям не видно) */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ── СВЯЗАТЬСЯ НАПРЯМУЮ ── */
+.contact-section{background:#fff;padding:28px 20px;border-top:1px solid #EDE7DC}
+.contact-wrap{max-width:580px;margin:0 auto;text-align:center}
+.contact-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:700;
+  text-transform:uppercase;color:#1C2B4B;margin-bottom:6px;
+}
+.contact-sub{font-size:11.5px;color:#666;line-height:1.65;margin-bottom:16px}
+.contact-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.contact-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:170px;padding:12px 18px;
+  border:1px solid #1C2B4B;background:#fff;color:#1C2B4B;
+  font-size:12px;font-weight:700;letter-spacing:0.4px;
+  -webkit-tap-highlight-color:transparent;
+}
+.contact-btn:hover,.contact-btn:active{background:#1C2B4B;color:#C9A24B}
+
+/* ── FOOTER ── */
+.footer{background:#1C2B4B;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.footer-logo{height:100px;width:auto;margin-bottom:4px;filter:brightness(0) invert(1)}
+.footer-email{font-size:12px;color:#C9A24B;text-decoration:none;font-weight:600}
+.footer-copy{font-size:9.5px;color:rgba(255,255,255,0.4);margin-top:6px}
+
+/* ══════════════════════════════
+   MOBILE
+══════════════════════════════ */
+@media(max-width:700px){
+
+  /* Hero */
+  .hero{min-height:auto;padding:18px 16px 26px}
+  .hero-logo{width:38px;height:38px}
+  .hero-logo-name{font-size:17px}
+  .hero-title{font-size:21px;margin-top:16px}
+  .hero-sub{font-size:11.5px}
+  .hero-cta{display:block;text-align:center;font-size:13px;padding:16px}
+
+  /* Section head */
+  .section-head{padding:20px 16px 10px}
+  .section-title{font-size:20px}
+  .section-subtitle{font-size:14px}
+
+  /* Что вы получаете — иконка слева, текст справа */
+  .give-grid{grid-template-columns:1fr;gap:10px;padding:0 12px 14px}
+  .give-card{display:flex;align-items:flex-start;gap:14px;text-align:left;padding:14px}
+  .give-card svg{margin:2px 0 0;width:28px;height:28px}
+  .give-h{font-size:17px}
+  .give-p{font-size:11.5px}
+
+  /* Плитки комплексов — 2 в ряд */
+  .tiles{grid-template-columns:1fr 1fr;gap:10px;padding:0 12px 16px}
+  .tile-name{font-size:15px;padding:22px 9px 7px}
+  .tile-loc{font-size:9px}
+  .tile-toggle{padding:9px 9px}
+  .tile-line{font-size:10.5px}
+  .tile-plus{width:20px;height:20px;font-size:14px}
+  .tile-details{padding:2px 9px 12px}
+  .tile.open .tile-details{padding-top:9px}
+  .card-list li{font-size:10.5px}
+
+  /* Как это работает — 2 + 2 */
+  .how-section{padding:24px 16px 28px}
+  .how-title{font-size:18px;margin-bottom:18px}
+  .how-flow{flex-wrap:wrap;justify-content:center;gap:20px 8px}
+  .how-step{flex:0 0 calc(50% - 8px);max-width:calc(50% - 8px)}
+  .how-circle{width:46px;height:46px}
+  .how-circle svg{width:20px;height:20px}
+  .how-label{font-size:11px}
+  .how-arrow{display:none}
+
+  /* Form */
+  .form-section{padding:24px 16px 36px}
+  .form-headline{font-size:22px}
+  .form-sub{font-size:11.5px}
+  .next-steps{gap:6px}
+  .next-steps li{font-size:10px}
+  .form-row{grid-template-columns:1fr}
+  .form-field input,
+  .form-field select,
+  .form-field textarea{
+    font-size:16px; /* предотвращает zoom на iOS */
+    padding:12px 14px;
+  }
+  .chip span{font-size:13px;padding:11px 14px}
+  .form-submit{font-size:12px;padding:16px;letter-spacing:1px}
+
+  /* Contact */
+  .contact-section{padding:24px 16px}
+  .contact-btn{width:100%}
+
+  /* Footer */
+  .footer{flex-direction:column;gap:20px;padding:22px 16px}
+  .footer-logo{height:60px}
+}
+
+@media(max-width:380px){
+  .hero-title{font-size:19px}
+  .tile-name{font-size:14px}
+  .how-circle{width:42px;height:42px}
+  .how-circle svg{width:18px;height:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-top">
+    <img src="logo.png" alt="Optimus Estate" class="hero-logo"/>
+    <div>
+      <div class="hero-logo-name">Optimus Estate</div>
+      <div class="hero-logo-sub">Инвестиционная компания</div>
+    </div>
+    <!-- Переключатель языка: появится, когда в настройках скрипта (внизу) указана ссылка BG_URL -->
+    <div class="lang-switch" id="langSwitch"><b>RU</b> / <a id="langLink" href="#">BG</a></div>
+  </div>
+  <h1 class="hero-title">Объекты и готовые решения<br>для ваших продаж на побережье Болгарии</h1>
+  <p class="hero-sub">Работаем исключительно через партнёров — агентства, брокеры, риелторы.<br>Эксклюзивные объекты, ремонт и управление арендой для вашего клиента. Защита вашей комиссии.</p>
+  <a href="#partner-form" class="hero-cta">Стать партнёром</a>
+</div>
+
+<!-- ══ ЧТО ВЫ ПОЛУЧАЕТЕ ══ -->
+<div class="section-head">
+  <div class="section-title">Что вы получаете</div>
+  <div class="section-subtitle">Всё для сделки с вашим клиентом</div>
+</div>
+
+<div class="give-grid">
+  <div class="give-card">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <div>
+      <div class="give-h">Объекты</div>
+      <div class="give-p">Эксклюзивные предложения на побережье Болгарии, которых нет на площадках.</div>
+    </div>
+  </div>
+  <div class="give-card">
+    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    <div>
+      <div class="give-h">Решения для вашего клиента</div>
+      <div class="give-p">Ремонт и обустройство, а после покупки управление арендой. Условия по запросу.</div>
+    </div>
+  </div>
+  <div class="give-card">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <div>
+      <div class="give-h">Поддержка партнёра</div>
+      <div class="give-p">Актуальные прайсы, презентации и материалы для клиента, юридическое сопровождение сделки.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ КОМПЛЕКСЫ ══ -->
+<div class="section-head">
+  <div class="section-title">Наши проекты</div>
+  <div class="section-subtitle">Лучшие локации побережья Болгарии</div>
+</div>
+
+<div class="tiles">
+
+  <article class="tile">
+    <div class="tile-media">
+      <img src="apollon.jpg" alt="Аполлон — Равда" class="tile-img" loading="lazy"/>
+      <div class="tile-name">Аполлон<span class="tile-loc">Равда</span></div>
+    </div>
+    <button type="button" class="tile-toggle" aria-expanded="false">
+      <span class="tile-line">Студии, 1, 2 и 3 спальни</span>
+      <span class="tile-plus" aria-hidden="true">+</span>
+    </button>
+    <div class="tile-details">
+      <ul class="card-list">
+        <li>Семейный комплекс у моря</li>
+        <li>Тихий и уютный район</li>
+        <li>Отличный сезонный арендный спрос</li>
+        <li>Развитая инфраструктура</li>
+      </ul>
+      <a href="#partner-form" class="card-tag">Запросить прайс</a>
+    </div>
+  </article>
+
+  <article class="tile">
+    <div class="tile-media">
+      <img src="tarsis.jpg" alt="Тарсис — Солнечный берег" class="tile-img" loading="lazy"/>
+      <div class="tile-name">Тарсис<span class="tile-loc">Солнечный берег</span></div>
+    </div>
+    <button type="button" class="tile-toggle" aria-expanded="false">
+      <span class="tile-line">Студии, 1 и 2 спальни</span>
+      <span class="tile-plus" aria-hidden="true">+</span>
+    </button>
+    <div class="tile-details">
+      <ul class="card-list">
+        <li>Курортный комплекс с высокой доходностью</li>
+        <li>Бассейны, рестораны, SPA, фитнес</li>
+        <li>Идеально для аренды и инвестиций</li>
+      </ul>
+      <a href="#partner-form" class="card-tag">Запросить прайс</a>
+    </div>
+  </article>
+
+  <article class="tile">
+    <div class="tile-media">
+      <img src="secondary.jpg" alt="Вторичная недвижимость" class="tile-img" loading="lazy"/>
+      <div class="tile-name">Вторичная недвижимость<span class="tile-loc">Курортные локации</span></div>
+    </div>
+    <button type="button" class="tile-toggle" aria-expanded="false">
+      <span class="tile-line">Готовые апартаменты у моря</span>
+      <span class="tile-plus" aria-hidden="true">+</span>
+    </button>
+    <div class="tile-details">
+      <ul class="card-list">
+        <li>Востребованные курортные локации</li>
+        <li>Студии и апартаменты разных форматов</li>
+        <li>Инвестиционная привлекательность</li>
+      </ul>
+      <a href="#partner-form" class="card-tag">Запросить прайс</a>
+    </div>
+  </article>
+
+  <article class="tile">
+    <div class="tile-media">
+      <img src="pomorie.jpg" alt="Pomorie Luxury Village" class="tile-img" style="object-position:top" loading="lazy"/>
+      <div class="tile-name">Pomorie Luxury Village<span class="tile-loc">Поморие</span></div>
+    </div>
+    <button type="button" class="tile-toggle" aria-expanded="false">
+      <span class="tile-line">Дома с собственными участками</span>
+      <span class="tile-plus" aria-hidden="true">+</span>
+    </button>
+    <div class="tile-details">
+      <ul class="card-list">
+        <li>Премиальный комплекс домов у моря</li>
+        <li>Тихий и престижный район Помория</li>
+        <li>Круглогодичное проживание</li>
+      </ul>
+      <a href="#partner-form" class="card-tag">Запросить прайс</a>
+    </div>
+  </article>
+
+  <article class="tile">
+    <div class="tile-media">
+      <img src="belleair.jpg" alt="Belle Air — Святой Влас" class="tile-img" loading="lazy"/>
+      <div class="tile-name">Belle Air<span class="tile-loc">Святой Влас</span></div>
+    </div>
+    <button type="button" class="tile-toggle" aria-expanded="false">
+      <span class="tile-line">Премиум, долгосрочные инвестиции</span>
+      <span class="tile-plus" aria-hidden="true">+</span>
+    </button>
+    <div class="tile-details">
+      <ul class="card-list">
+        <li>Премиальный образ жизни</li>
+        <li>Качественное строительство</li>
+        <li>Спокойный и престижный район</li>
+      </ul>
+      <a href="#partner-form" class="card-tag">Запросить прайс</a>
+    </div>
+  </article>
+
+  <article class="tile">
+    <div class="tile-media">
+      <img src="centralpark.jpg" alt="Central Park — Бургас" class="tile-img" loading="lazy"/>
+      <div class="tile-name">Central Park<span class="tile-loc">Бургас</span></div>
+    </div>
+    <button type="button" class="tile-toggle" aria-expanded="false">
+      <span class="tile-line">Современный комплекс для жизни круглый год</span>
+      <span class="tile-plus" aria-hidden="true">+</span>
+    </button>
+    <div class="tile-details">
+      <ul class="card-list">
+        <li>Престижный развивающийся район</li>
+        <li>Комфорт для жизни круглый год</li>
+        <li>Отличный инвестиционный потенциал</li>
+      </ul>
+      <a href="#partner-form" class="card-tag">Запросить прайс</a>
+    </div>
+  </article>
+
+</div>
+
+<!-- ══ КАК ЭТО РАБОТАЕТ ══ -->
+<section class="how-section">
+  <h2 class="how-title">Как это работает для вас</h2>
+  <div class="how-flow">
+    <div class="how-step">
+      <div class="how-circle">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <div class="how-label">Вы выбираете объект для клиента</div>
+    </div>
+    <div class="how-arrow">→</div>
+    <div class="how-step">
+      <div class="how-circle">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div class="how-label">При необходимости подключаем ремонт и управление арендой</div>
+    </div>
+    <div class="how-arrow">→</div>
+    <div class="how-step">
+      <div class="how-circle">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="how-label">Сопровождаем сделку</div>
+    </div>
+    <div class="how-arrow">→</div>
+    <div class="how-step">
+      <div class="how-circle">
+        <svg viewBox="0 0 24 24"><path d="M3 12l2-2 4 4 8-8 2 2-10 10z"/></svg>
+      </div>
+      <div class="how-label">Вы получаете вознаграждение по условиям сотрудничества</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORM ══ -->
+<section class="form-section" id="partner-form">
+  <div class="form-wrap">
+    <h2 class="form-headline">Станьте партнёром</h2>
+    <div class="form-gold-line"></div>
+    <p class="form-sub">Получите прайсы и материалы для вашего клиента</p>
+
+    <ol class="next-steps">
+      <li><div class="next-num">1</div>Свяжемся и ответим на вопросы</li>
+      <li><div class="next-num">2</div>Отправим прайсы и презентации</li>
+      <li><div class="next-num">3</div>Подключим к актуальному наличию</li>
+    </ol>
+
+    <div id="formBlock">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Ваше имя *</label>
+          <input type="text" id="f-name" placeholder="Иван Иванов" autocomplete="name"/>
+        </div>
+        <div class="form-field">
+          <label>Агентство / Компания *</label>
+          <input type="text" id="f-company" placeholder="Название агентства" autocomplete="organization"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Email *</label>
+          <input type="email" id="f-email" placeholder="ivan@agency.com" autocomplete="email" inputmode="email"/>
+        </div>
+        <div class="form-field">
+          <label>Телефон / WhatsApp / Telegram</label>
+          <input type="tel" id="f-phone" placeholder="+359 или +1..." autocomplete="tel" inputmode="tel"/>
+        </div>
+      </div>
+
+      <!-- Что интересует: выбор попадает в начало поля «Комментарий», поля в Make не меняются -->
+      <div class="chips-block">
+        <span class="field-label">Что интересует (можно выбрать несколько)</span>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" value="Продажа"/><span>Продажа</span></label>
+          <label class="chip"><input type="checkbox" value="Ремонт и обустройство"/><span>Ремонт и обустройство</span></label>
+          <label class="chip"><input type="checkbox" value="Управление арендой"/><span>Управление арендой</span></label>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Комментарий</label>
+        <textarea id="f-comment" placeholder="Расскажите о ваших клиентах или задайте вопрос..."></textarea>
+      </div>
+
+      <!-- Скрытое поле-ловушка для роботов: людям не видно, не заполнять -->
+      <div class="hp" aria-hidden="true">
+        <label>Не заполняйте это поле</label>
+        <input type="text" id="f-hp" name="contact_hp" tabindex="-1" autocomplete="off"/>
+      </div>
+
+      <button class="form-submit" onclick="submitForm()">Отправить запрос →</button>
+      <p class="form-note"><span id="privacyText">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</span><br>В рабочее время отвечаем в течение часа. Заявки вне рабочего времени обрабатываем на следующий рабочий день.</p>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✓</div>
+      <div class="form-success-title">Запрос отправлен!</div>
+      <div class="form-success-text">Мы получили вашу заявку и свяжемся с вами по указанным контактам, чтобы отправить прайсы и условия сотрудничества.<br>Если вопрос срочный, напишите нам напрямую:</div>
+      <div class="form-success-actions">
+        <a class="contact-btn" href="https://wa.me/359895176685?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Василий</a>
+        <a class="contact-btn" href="https://wa.me/359877692546?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Александр</a>
+        <a class="contact-btn js-telegram" href="#" target="_blank" rel="noopener" style="display:none">Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ СВЯЗАТЬСЯ НАПРЯМУЮ ══ -->
+<section class="contact-section">
+  <div class="contact-wrap">
+    <h2 class="contact-title">Удобнее написать?</h2>
+    <p class="contact-sub">Напишите нам в мессенджер — ответим на вопросы и подскажем, как получить прайсы и условия.</p>
+    <div class="contact-btns">
+      <a class="contact-btn" href="https://wa.me/359895176685?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Василий</a>
+      <a class="contact-btn" href="https://wa.me/359877692546?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Optimus%20Estate%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D0%BE%D0%BC" target="_blank" rel="noopener">WhatsApp: Александр</a>
+      <a class="contact-btn js-telegram" href="#" target="_blank" rel="noopener" style="display:none">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <img src="logo.png" alt="Optimus Estate" class="footer-logo"/>
+  <a href="mailto:optimusbg@mail.ru" class="footer-email">optimusbg@mail.ru</a>
+  <div class="footer-copy">© Optimus Estate — эксклюзивная недвижимость на побережье Болгарии</div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   НАСТРОЙКИ — заполните, когда ссылки будут готовы.
+   Пустое значение ('') = соответствующий блок на странице скрыт.
+══════════════════════════════════════════════════════════════ */
+var BG_URL       = '';  // ссылка на болгарскую версию страницы
+var TELEGRAM_URL = '';  // ссылка на Telegram (канал или аккаунт)
+var PRIVACY_URL  = '';  // ссылка на страницу политики конфиденциальности
+
+(function initSettings(){
+  if (BG_URL) {
+    document.getElementById('langLink').href = BG_URL;
+    document.getElementById('langSwitch').style.display = 'block';
+  }
+  if (TELEGRAM_URL) {
+    document.querySelectorAll('.js-telegram').forEach(function(a){
+      a.href = TELEGRAM_URL;
+      a.style.display = 'inline-flex';
+    });
+  }
+  if (PRIVACY_URL) {
+    document.getElementById('privacyText').innerHTML =
+      'Нажимая кнопку, вы соглашаетесь на обработку персональных данных в соответствии с ' +
+      '<a href="' + PRIVACY_URL + '" target="_blank" rel="noopener">политикой конфиденциальности</a>.';
+  }
+})();
+
+/* Плитки комплексов: нажатие раскрывает и скрывает подробности */
+document.querySelectorAll('.tile').forEach(function(tile){
+  var btn = tile.querySelector('.tile-toggle');
+  var plus = tile.querySelector('.tile-plus');
+  function toggle(){
+    var open = tile.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    plus.textContent = open ? '\u2212' : '+';
+  }
+  btn.addEventListener('click', toggle);
+  tile.querySelector('.tile-media').addEventListener('click', toggle);
+});
+
+function showSuccess(){
+  document.getElementById('formBlock').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+
+async function submitForm(){
+  var name = document.getElementById('f-name').value.trim();
+  var company = document.getElementById('f-company').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+
+  if(!name||!company||!email){
+    alert('Пожалуйста, заполните обязательные поля: имя, агентство и email.');
+    return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    alert('Проверьте адрес email: похоже, в нём есть ошибка.');
+    return;
+  }
+
+  /* Ловушка для роботов: если скрытое поле заполнено, заявку не отправляем */
+  if(document.getElementById('f-hp').value){
+    showSuccess();
+    return;
+  }
+
+  var phone = document.getElementById('f-phone').value.trim();
+  var comment = document.getElementById('f-comment').value.trim();
+
+  /* Выбранные интересы добавляются в начало комментария */
+  var interests = Array.prototype.map.call(
+    document.querySelectorAll('.chip input:checked'),
+    function(i){ return i.value; }
+  );
+  if(interests.length){
+    comment = 'Что интересует: ' + interests.join(', ') + (comment ? '. ' + comment : '');
+  }
+
+  var submitBtn = document.querySelector('.form-submit');
+  var originalBtnText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Отправка...';
+
+  try {
+    /* Адрес вебхука и названия полей НЕ менять: на них настроен Make */
+    const response = await fetch('https://hook.eu1.make.com/vf7uazlhhd35js8xf3p72676dhhsjnzo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        company: company,
+        email: email,
+        phone: phone,
+        comment: comment,
+        language: 'ru'
+      })
+    });
+
+    if(!response.ok){
+      throw new Error('Webhook error: ' + response.status);
+    }
+
+    showSuccess();
+
+  } catch(err){
+    console.error(err);
+    alert('Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на optimusbg@mail.ru');
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
+  }
+}
+</script>
+
+</body>
+</html>

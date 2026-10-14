@@ -684,21 +684,16 @@ document.querySelectorAll('.tile').forEach(function(tile){
   tile.querySelector('.tile-media').addEventListener('click', toggle);
 });
 
-/* Откуда пришла заявка: из ссылки ?src=ig_bio | ig_ads | fb | tg (и ?utm_campaign=...).
+/* Откуда пришла заявка: из ссылки ?src=ig_bio | ig_ads | fb | tg.
    Значение запоминается на время визита; без метки source = 'direct' */
 function getTracking(){
-  var src = '', campaign = '';
+  var src = '';
   function clean(v){ return (v || '').replace(/[^A-Za-z0-9_\-]/g, '').slice(0, 60); }
-  try {
-    var q = new URLSearchParams(location.search);
-    src = clean(q.get('src'));
-    campaign = clean(q.get('utm_campaign'));
-  } catch(e){}
+  try { src = clean(new URLSearchParams(location.search).get('src')); } catch(e){}
   try {
     if (src) sessionStorage.setItem('optimus_src', src); else src = sessionStorage.getItem('optimus_src') || '';
-    if (campaign) sessionStorage.setItem('optimus_campaign', campaign); else campaign = sessionStorage.getItem('optimus_campaign') || '';
   } catch(e){}
-  return { source: src || 'direct', campaign: campaign };
+  return { source: src || 'direct' };
 }
 getTracking(); /* запоминаем метку сразу при открытии страницы */
 
@@ -750,8 +745,7 @@ async function submitForm(){
         phone: phone,
         comment: comment,
         language: 'ru',
-        source: tracking.source,
-        campaign: tracking.campaign
+        source: tracking.source
       })
     });
 

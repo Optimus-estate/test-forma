@@ -649,13 +649,13 @@ button{font-family:inherit}
    НАСТРОЙКИ — заполните, когда ссылки будут готовы.
    Пустое значение ('') = соответствующий блок на странице скрыт.
 ══════════════════════════════════════════════════════════════ */
-var BG_URL       = '';  // ссылка на болгарскую версию страницы
+var BG_URL       = 'https://optimus-estate.github.io/presentation-forma.bg/';  // ссылка на болгарскую версию страницы
 var TELEGRAM_URL = '';  // ссылка на Telegram (канал или аккаунт)
 var PRIVACY_URL  = '';  // ссылка на страницу политики конфиденциальности
 
 (function initSettings(){
   if (BG_URL) {
-    document.getElementById('langLink').href = BG_URL;
+    document.getElementById('langLink').href = BG_URL + location.search;  /* метки ?src= переходят вместе со ссылкой */
     document.getElementById('langSwitch').style.display = 'block';
   }
   if (TELEGRAM_URL) {
@@ -684,6 +684,24 @@ document.querySelectorAll('.tile').forEach(function(tile){
   tile.querySelector('.tile-media').addEventListener('click', toggle);
 });
 
+/* Откуда пришла заявка: из ссылки ?src=ig_bio | ig_ads | fb | tg (и ?utm_campaign=...).
+   Значение запоминается на время визита; без метки source = 'direct' */
+function getTracking(){
+  var src = '', campaign = '';
+  function clean(v){ return (v || '').replace(/[^A-Za-z0-9_\-]/g, '').slice(0, 60); }
+  try {
+    var q = new URLSearchParams(location.search);
+    src = clean(q.get('src'));
+    campaign = clean(q.get('utm_campaign'));
+  } catch(e){}
+  try {
+    if (src) sessionStorage.setItem('optimus_src', src); else src = sessionStorage.getItem('optimus_src') || '';
+    if (campaign) sessionStorage.setItem('optimus_campaign', campaign); else campaign = sessionStorage.getItem('optimus_campaign') || '';
+  } catch(e){}
+  return { source: src || 'direct', campaign: campaign };
+}
+getTracking(); /* запоминаем метку сразу при открытии страницы */
+
 function showSuccess(){
   document.getElementById('formBlock').style.display='none';
   document.getElementById('formSuccess').style.display='block';
@@ -709,6 +727,7 @@ async function submitForm(){
     return;
   }
 
+  var tracking = getTracking();
   var phone = document.getElementById('f-phone').value.trim();
   var comment = document.getElementById('f-comment').value.trim();
 
@@ -730,7 +749,9 @@ async function submitForm(){
         email: email,
         phone: phone,
         comment: comment,
-        language: 'ru'
+        language: 'ru',
+        source: tracking.source,
+        campaign: tracking.campaign
       })
     });
 
